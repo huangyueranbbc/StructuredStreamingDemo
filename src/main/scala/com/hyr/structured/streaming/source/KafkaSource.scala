@@ -1,19 +1,20 @@
-package com.hyr.structured.streaming
+package com.hyr.structured.streaming.source
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.streaming.StreamingQueryListener.{QueryProgressEvent, QueryStartedEvent, QueryTerminatedEvent}
 import org.apache.spark.sql.streaming.{OutputMode, StreamingQueryListener, Trigger}
 
 /** *****************************************************************************
+ *
  * @date 2020-12-30 11:31 上午
  * @author: <a href=mailto:huangyr>黄跃然</a>
- * @Description: Structured Streaming + Kafka 消费kafka数据写入csv
+ * @Description: Structured Streaming + Kafka 消费kafka数据源写入csv
  * *****************************************************************************/
-object KafkaDemo {
+object KafkaSource {
 
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder
-      .appName("StructuredNetworkWordCount")
+      .appName(this.getClass.getName)
       .master("local[1]")
       .getOrCreate()
 
@@ -22,7 +23,7 @@ object KafkaDemo {
       .format("kafka")
       .option("kafka.bootstrap.servers", "10.2.111.54:9092")
       .option("subscribe", "kbssusertopic")
-      .option("startingOffsets", """{"kbssusertopic":{"0":198423576}}""")
+      .option("startingOffsets", "earliest")
       .load()
 
     // 添加监听器，每一批次处理完成，将该批次的相关信息，如起始offset，抓取记录数量，处理时间打印到控制台

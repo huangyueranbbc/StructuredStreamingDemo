@@ -13,7 +13,7 @@ object WordCount {
 
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder
-      .appName("StructuredNetworkWordCount")
+      .appName(this.getClass.getName)
       .master("local[1]")
       .getOrCreate()
 
