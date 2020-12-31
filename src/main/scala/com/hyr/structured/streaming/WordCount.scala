@@ -1,7 +1,10 @@
+package com.hyr.structured.streaming
+
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.streaming.OutputMode
 
 /** *****************************************************************************
+ *
  * @date 2020-12-30 11:31 上午
  * @author: <a href=mailto:huangyr>黄跃然</a>
  * @Description: 单词次数统计
