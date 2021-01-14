@@ -5,7 +5,7 @@ import com.hyr.structured.streaming.sink.MysqlWriter
 
 /** *****************************************************************************
  * @date 2020-12-31 10:24 上午
- * @author: <a href=mailto:huangyr>黄跃然</a>
+ * @author: <a href=mailto:huangyr>huangyr</a>
  * @Description:
  * *****************************************************************************/
 object JDBCTest {

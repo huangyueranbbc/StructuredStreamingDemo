@@ -9,7 +9,7 @@ import org.apache.spark.sql.{ForeachWriter, Row}
 /** *****************************************************************************
  *
  * @date 2020-12-31 10:07 上午
- * @author: <a href=mailto:huangyr>黄跃然</a>
+ * @author: <a href=mailto:huangyr>huangyr</a>
  * @Description: MySQL Sink 将数据写入MySQL
  *
  *               create table wordcount

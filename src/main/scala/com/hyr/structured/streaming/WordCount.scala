@@ -6,7 +6,7 @@ import org.apache.spark.sql.streaming.OutputMode
 /** *****************************************************************************
  *
  * @date 2020-12-30 11:31 上午
- * @author: <a href=mailto:huangyr>黄跃然</a>
+ * @author: <a href=mailto:huangyr>huangyr</a>
  * @Description: 单词次数统计
  * *****************************************************************************/
 object WordCount {

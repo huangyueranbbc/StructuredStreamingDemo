@@ -3,11 +3,12 @@ package com.hyr.structured.streaming.sink
 import org.apache.spark.sql.SparkSession
 
 /** *****************************************************************************
+ *
  * @date 2020-12-31 10:02 上午
- * @author: <a href=mailto:huangyr>黄跃然</a>
+ * @author: <a href=mailto:huangyr>huangyr</a>
  * @Description: Structured Streaming + 将计算结果数据写入存储服务
- ******************************************************************************/
-object StructuredStreamingSink {
+ * *****************************************************************************/
+object StructuredStreamingForeachBatchSink {
 
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder
@@ -23,10 +24,16 @@ object StructuredStreamingSink {
       .option("startingOffsets", "earliest")
       .load()
 
+    // kafka消息的schema
     df.printSchema()
     val query = df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)", "CAST(partition AS STRING)", "CAST(offset AS STRING)", "CAST(topic AS STRING)", "CAST(timestamp AS STRING)")
+      .repartition(10)
       .writeStream
-      .foreach(new MysqlWriter())
+      .foreachBatch((dataSet, batchId) => {
+        println("======> batchID:"+batchId)
+        //dataSet.foreach( t=>{println(t)})
+      })
+      //.foreach(new MysqlWriter())
       .start()
 
     query.awaitTermination()
