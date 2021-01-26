@@ -10,3 +10,5 @@ case class Person(name: String, age: Long)
 case class Employee(name: String, salary: Long)
 
 case class Average(var sum: Long, var count: Long)
+
+case class Record(key: Int, value: String)

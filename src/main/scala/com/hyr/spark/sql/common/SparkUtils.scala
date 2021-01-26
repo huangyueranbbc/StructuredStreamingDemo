@@ -15,6 +15,7 @@ object SparkUtils {
       .config("spark.some.config.option", "some-value")
       .master("local[1]")
       .getOrCreate()
+
     spark
   }
 
